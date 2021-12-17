@@ -1,10 +1,13 @@
-﻿namespace InventoryProgram_C968
+﻿using System.Text.RegularExpressions;
+using System.ComponentModel;
+using System.Diagnostics;
+
+namespace InventoryProgram_C968
 {
     public partial class AddModPart : Form
     {
         private string mode = "";
         private string source_mode = "in-house";
-        private Part part = null;
 
 
         public AddModPart()
@@ -18,7 +21,6 @@
 
         public AddModPart(Part _part)
         {
-            this.part = _part;
             mode = "mod";
             InitializeComponent();
             Text = "Modify Part";
@@ -34,14 +36,14 @@
             input_price.Text = _part.Price.ToString();
             input_min.Text = _part.Min.ToString();
             input_max.Text = _part.Max.ToString();
-            if (part is Inhouse)
+            if (_part is Inhouse)
             {
                 input_source.Text = _part.get_machine_id().ToString();
                 source_mode = "in-house";
                 lbl_source.Text = "Machine ID";
                 rad_btn_in_house.Checked = true;
             }
-            else if (part is Outsourced)
+            else if (_part is Outsourced)
             {
                 input_source.Text = _part.get_company_name().ToString();
                 source_mode = "outsourced";
@@ -70,14 +72,28 @@
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            string name = input_name.Text;
+            double price = Convert.ToDouble(input_price.Text);
+            int in_stock = Convert.ToInt32(input_inventory.Text);
+            int min = Convert.ToInt32(input_min.Text);
+            int max = Convert.ToInt32(input_max.Text);
+
+            if (min > max)
+            {
+                MessageBox.Show("Min can not be greater than max");
+                input_min.Focus();
+                return;
+            }
+
+            if (in_stock < min || in_stock > max)
+            {
+                MessageBox.Show($"Inventory count must be within {min} - {max}");
+                input_inventory.Focus();
+                return;
+            }
+
             if (mode == "add")
             {
-                string name = input_name.Text;
-                double price = Convert.ToDouble(input_price.Text);
-                int in_stock = Convert.ToInt32(input_inventory.Text);
-                int min = Convert.ToInt32(input_min.Text);
-                int max = Convert.ToInt32(input_max.Text);
-
                 if (source_mode == "in-house")
                 {
                     int machine_id = Convert.ToInt32(input_source.Text);
@@ -107,11 +123,6 @@
             else if (mode == "mod")
             {
                 Part modified_part;
-                string name = input_name.Text;
-                double price = Convert.ToDouble(input_price.Text);
-                int in_stock = Convert.ToInt32(input_inventory.Text);
-                int min = Convert.ToInt32(input_min.Text);
-                int max = Convert.ToInt32(input_max.Text);
 
                 if (source_mode == "in-house")
                 {
@@ -140,5 +151,62 @@
                 this.Close();
             }
         }
+
+
+        // Text validation
+        private void num_validate(object sender, CancelEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (Regex.IsMatch(textBox.Text, "[0-9]"))
+            {
+
+                textBox.BackColor = Color.White;
+            }
+            else
+            {
+                e.Cancel = true;
+                textBox.BackColor = Color.Red;
+            }
+        }
+
+        private void string_validate(object sender, CancelEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (Regex.IsMatch(textBox.Text, "[a-z]|[A-Z]|/s"))
+            {
+
+                textBox.BackColor = Color.White;
+            }
+            else
+            {
+                e.Cancel = true;
+                textBox.BackColor = Color.Red;
+            }
+        }
+
+        private void source_validate(object sender, CancelEventArgs e)
+        {
+            string regex = "";
+            if (source_mode == "in-house")
+            {
+                regex = "[0-9]";
+            }
+            else
+            {
+                regex = "[a-z]|[A-Z]|/s";
+            }
+
+            TextBox textBox = sender as TextBox;
+            if (Regex.IsMatch(textBox.Text, regex))
+            {
+                textBox.BackColor = Color.White;
+            }
+            else
+            {
+                e.Cancel = true;
+                textBox.BackColor = Color.Red;
+            }
+        }
     }
 }
+

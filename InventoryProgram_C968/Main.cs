@@ -219,8 +219,15 @@ namespace InventoryProgram_C968
             // Look up part
             Product product = Inventory.lookupProduct(index);
             // Delete part
-            Inventory.removeProduct(index);
-            RefreshDataGrids();
+            if (product.AssociatedParts.Count == 0)
+            {
+                Inventory.removeProduct(index);
+                RefreshDataGrids();
+            }
+            else
+            {
+                MessageBox.Show("Can not delete product with associated parts. \nPlease remove parts first");
+            }
         }
 
         private void btn_search_product_Click(object sender, EventArgs e)

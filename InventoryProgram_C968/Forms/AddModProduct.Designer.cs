@@ -90,6 +90,7 @@
             this.input_name.Name = "input_name";
             this.input_name.Size = new System.Drawing.Size(114, 27);
             this.input_name.TabIndex = 4;
+            this.input_name.Validating += new System.ComponentModel.CancelEventHandler(this.string_validate);
             // 
             // label2
             // 
@@ -107,6 +108,7 @@
             this.input_inventory.Name = "input_inventory";
             this.input_inventory.Size = new System.Drawing.Size(114, 27);
             this.input_inventory.TabIndex = 6;
+            this.input_inventory.Validating += new System.ComponentModel.CancelEventHandler(this.num_validate);
             // 
             // label3
             // 
@@ -124,6 +126,7 @@
             this.input_price.Name = "input_price";
             this.input_price.Size = new System.Drawing.Size(114, 27);
             this.input_price.TabIndex = 8;
+            this.input_price.Validating += new System.ComponentModel.CancelEventHandler(this.num_validate);
             // 
             // label4
             // 
@@ -141,6 +144,7 @@
             this.input_min.Name = "input_min";
             this.input_min.Size = new System.Drawing.Size(114, 27);
             this.input_min.TabIndex = 10;
+            this.input_min.Validating += new System.ComponentModel.CancelEventHandler(this.num_validate);
             // 
             // label5
             // 
@@ -158,6 +162,7 @@
             this.input_max.Name = "input_max";
             this.input_max.Size = new System.Drawing.Size(114, 27);
             this.input_max.TabIndex = 12;
+            this.input_max.Validating += new System.ComponentModel.CancelEventHandler(this.num_validate);
             // 
             // label6
             // 

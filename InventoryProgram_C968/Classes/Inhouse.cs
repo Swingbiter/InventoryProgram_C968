@@ -19,5 +19,10 @@ namespace InventoryProgram_C968
         {
             machineID = _machineID;
         }
+
+        public override int get_machine_id()
+        {
+            return machineID;
+        }
     }
 }

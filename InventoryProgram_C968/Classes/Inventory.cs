@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace InventoryProgram_C968
 {
     internal class Inventory
@@ -12,19 +8,19 @@ namespace InventoryProgram_C968
         public static List<Part> AllParts = new List<Part>();
 
         // Increments when a part or product is added
-        private static int part_id = 0;
-        private static int product_id = 0;
+        public static int next_part_id = 0;
+        public static int next_product_id = 0;
 
-        public static int PartId
+        public static int AutoPartId
         {
-            get { return part_id++; } // Give ID then increment
-            set { part_id = value; }
+            get { return next_part_id++; } // Give ID then increment
+            set { next_part_id = value; }
         }
 
-        public static int ProductId
+        public static int AutoProductId
         {
-            get { return product_id++; } // Give ID then increment
-            set { product_id = value; }
+            get { return next_product_id++; } // Give ID then increment
+            set { next_product_id = value; }
         }
 
         // Product Methods
@@ -56,6 +52,24 @@ namespace InventoryProgram_C968
             return null;
         }
 
+        public static void UpdateProduct(int productID, Product updated_product)
+        {
+            Product? oldProduct = null;
+            foreach (Product product in Products)
+            {
+                if (product.ProductID == productID)
+                {
+                    oldProduct = product;
+                }
+            }
+            if (oldProduct != null)
+            {
+                var index = Products.IndexOf(oldProduct);
+                Products[index] = updated_product;
+            }
+            oldProduct = updated_product;
+        }
+
         // Part methods
         public static void addPart(Part part)
         {
@@ -71,11 +85,12 @@ namespace InventoryProgram_C968
         {
             foreach (Part part in AllParts)
             {
-                if (part.PartID == part_id)
+                if (part.PartID == partID)
                 {
                     return part;
                 }
             }
+
             return null;
         }
 
@@ -93,8 +108,8 @@ namespace InventoryProgram_C968
             {
                 var index = AllParts.IndexOf(oldPart);
                 AllParts[index] = updated_part;
-                oldPart = updated_part;
             }
+            oldPart = updated_part;
         }
 
     }

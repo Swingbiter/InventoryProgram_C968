@@ -14,22 +14,26 @@ namespace InventoryProgram_C968
         Product product;
         public AddModProduct()
         {
+            partsToAddBindingList = new BindingList<Part>();
             InitializeComponent();
             lbl_title.Text = "Add Product";
             Text = "Add Product";
             RefreshDataGrids();
             mode = "add";
             input_id.Text = Inventory.next_product_id.ToString();
+            SetupDGV();
         }
 
         public AddModProduct(Product _product)
         {
+            partsToAddBindingList = new BindingList<Part>();
             InitializeComponent();
             product = _product;
             mode = "mod";
             lbl_title.Text = "Modify Product";
             Text = "Modify Product";
             LoadProduct(_product);
+            SetupDGV();
             RefreshDataGrids();
         }
 
@@ -45,6 +49,12 @@ namespace InventoryProgram_C968
             {
                 partsToAddBindingList.Add(part);
             }
+        }
+
+        public void SetupDGV()
+        {
+            addPartsDataGridView.RowHeadersVisible = false;
+            currentPartsDataGridView.RowHeadersVisible = false;
         }
 
         public void RefreshDataGrids()
@@ -126,7 +136,45 @@ namespace InventoryProgram_C968
                     );
                 Inventory.UpdateProduct(productID, modified_product);
                 Close();
-            }    
+            }
+
+            
+        }
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            int searchID = 0;
+            bool searchFound = false;
+
+            try
+            {
+                searchID = Convert.ToInt32(input_search.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Must be a integer (0, 1, 2, etc.)");
+                input_search.Clear();
+                input_search.Focus();
+                return;
+            }
+
+            foreach (DataGridViewRow dataGridViewRow in addPartsDataGridView.Rows)
+            {
+                Part part = (Part)dataGridViewRow.DataBoundItem;
+                // if part found select that row
+                if (part.PartID == searchID)
+                {
+                    dataGridViewRow.Selected = true;
+                    searchFound = true;
+                    break;
+                }
+            }
+
+            if (!searchFound)
+            {
+                MessageBox.Show("Part not found");
+                input_search.Clear();
+                input_search.Focus();
+            }
         }
     }
 }

@@ -24,6 +24,8 @@ namespace InventoryProgram_C968
             Inventory.addPart(new Outsourced("Tassles", 3.25, 36, 4, 4, "Pure Unadulterated Blissporium"));
             Inventory.addPart(new Outsourced("Flame Decals", 3.25, 36, 4, 4, "More Horsepower Ltd."));
             Inventory.addPart(new Outsourced("Card Clacker", 3.25, 36, 4, 4, "BEST COMPANY"));
+            Inventory.addPart(new Outsourced("Bike Horn", 3.25, 36, 4, 4, "HONKS R US"));
+
 
             Inventory.addProduct(new Product("Red Bike", 100.00, 37, 0, 100, new ArrayList()));
             Inventory.addProduct(new Product("Green Bike", 135.00, 67, 0, 100, new ArrayList()));
@@ -38,6 +40,7 @@ namespace InventoryProgram_C968
             red_bike.addAssociatedPart(Inventory.lookupPart(5));
             red_bike.addAssociatedPart(Inventory.lookupPart(6));
             red_bike.addAssociatedPart(Inventory.lookupPart(8));
+            red_bike.addAssociatedPart(Inventory.lookupPart(10));
 
             // green bike add parts
             Product green_bike = Inventory.lookupProduct(1);
@@ -47,6 +50,7 @@ namespace InventoryProgram_C968
             green_bike.addAssociatedPart(Inventory.lookupPart(5));
             green_bike.addAssociatedPart(Inventory.lookupPart(6));
             green_bike.addAssociatedPart(Inventory.lookupPart(9));
+            green_bike.addAssociatedPart(Inventory.lookupPart(10));
 
             // blue bike add parts
             Product blue_bike = Inventory.lookupProduct(2);
@@ -56,6 +60,7 @@ namespace InventoryProgram_C968
             blue_bike.addAssociatedPart(Inventory.lookupPart(5));
             blue_bike.addAssociatedPart(Inventory.lookupPart(6));
             blue_bike.addAssociatedPart(Inventory.lookupPart(7));
+            blue_bike.addAssociatedPart(Inventory.lookupPart(10));
 
         }
 

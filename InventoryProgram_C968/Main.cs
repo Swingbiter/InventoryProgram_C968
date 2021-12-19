@@ -30,6 +30,7 @@ namespace InventoryProgram_C968
             Inventory.addProduct(new Product("Red Bike", 100.00, 37, 0, 100, new ArrayList()));
             Inventory.addProduct(new Product("Green Bike", 135.00, 67, 0, 100, new ArrayList()));
             Inventory.addProduct(new Product("Blue Bike", 125.00, 15, 1, 25, new ArrayList()));
+            Inventory.addProduct(new Product("Empty Bike", 125.00, 15, 1, 25, new ArrayList()));
 
 
             // red bike add parts
@@ -74,8 +75,7 @@ namespace InventoryProgram_C968
             productDataGridView.DataSource = productBindingSource;
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
             AddFakeData();
             RefreshDataGrids();
@@ -132,18 +132,20 @@ namespace InventoryProgram_C968
 
         private void btn_remove_part_Click(object sender, EventArgs e)
         {
-            // Get row
-            DataGridViewRow row = partsDataGridView.SelectedRows[0];
-            // Get part id
-            int index = Convert.ToInt32(row.Cells["PartID"].Value);
-            // Look up part
-            Part part = Inventory.lookupPart(index);
-            // Delete part
-            Inventory.removePart(part);
-            RefreshDataGrids();
+            DialogResult confirmDelete = MessageBox.Show("Are you sure you want to delete this item?", "Confirm", MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                // Get row
+                DataGridViewRow row = partsDataGridView.SelectedRows[0];
+                // Get part id
+                int index = Convert.ToInt32(row.Cells["PartID"].Value);
+                // Look up part
+                Part part = Inventory.lookupPart(index);
+                // Delete part
+                Inventory.removePart(part);
+                RefreshDataGrids();
+            }
         }
-        
-        
 
         private void btn_search_parts_Click(object sender, EventArgs e)
         {
@@ -221,8 +223,12 @@ namespace InventoryProgram_C968
             // Delete part
             if (product.AssociatedParts.Count == 0)
             {
-                Inventory.removeProduct(index);
-                RefreshDataGrids();
+                DialogResult confirmDelete = MessageBox.Show("Are you sure you want to delete this item?", "Confirm", MessageBoxButtons.YesNo);
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    Inventory.removeProduct(index);
+                    RefreshDataGrids();
+                }
             }
             else
             {

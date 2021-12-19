@@ -12,8 +12,8 @@ namespace InventoryProgram_C968
         public static BindingSource addPartsBindingSource = new BindingSource();
         public static BindingSource currentPartsBindingSource = new BindingSource();
         public static BindingList<Part> partsToAddBindingList = new BindingList<Part>();
-        Product product;
-        public AddModProduct()
+
+        public AddModProduct() // Empty constructor yields Add Product form
         {
             partsToAddBindingList = new BindingList<Part>();
             InitializeComponent();
@@ -25,11 +25,10 @@ namespace InventoryProgram_C968
             SetupDGV();
         }
 
-        public AddModProduct(Product _product)
+        public AddModProduct(Product _product) // Constructor with Product argument yields Mod Product form
         {
             partsToAddBindingList = new BindingList<Part>();
             InitializeComponent();
-            product = _product;
             mode = "mod";
             lbl_title.Text = "Modify Product";
             Text = "Modify Product";
@@ -38,6 +37,7 @@ namespace InventoryProgram_C968
             RefreshDataGrids();
         }
 
+        // Load product information in input boxes.
         public void LoadProduct(Product _product)
         {
             input_id.Text = _product.ProductID.ToString();
@@ -52,6 +52,7 @@ namespace InventoryProgram_C968
             }
         }
 
+        // Display handling
         public void SetupDGV()
         {
             addPartsDataGridView.RowHeadersVisible = false;
@@ -80,12 +81,15 @@ namespace InventoryProgram_C968
             partsToAddBindingList.Add(part);
             RefreshDataGrids();
         }
+        // Button event handling
 
+        // Exit form
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Delete
         private void btn_delete_Click(object sender, EventArgs e)
         {
             // Get row
@@ -93,15 +97,21 @@ namespace InventoryProgram_C968
             {
                 return;
             }
-            DataGridViewRow row = currentPartsDataGridView.SelectedRows[0];
-            // Get part id
-            int index = Convert.ToInt32(row.Cells["PartID"].Value);
-            // Look up part
-            Part part = Inventory.lookupPart(index);
-            partsToAddBindingList.Remove(part);
-            RefreshDataGrids();
+
+            DialogResult confirmDelete = MessageBox.Show("Are you sure you want to delete this item?", "Confirm", MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                DataGridViewRow row = currentPartsDataGridView.SelectedRows[0];
+                // Get part id
+                int index = Convert.ToInt32(row.Cells["PartID"].Value);
+                // Look up part
+                Part part = Inventory.lookupPart(index);
+                partsToAddBindingList.Remove(part);
+                RefreshDataGrids();
+            }
         }
 
+        // Save / Modify Product
         private void btn_save_Click(object sender, EventArgs e)
         {
             ArrayList partsList = new ArrayList();
@@ -111,6 +121,7 @@ namespace InventoryProgram_C968
             int min = Convert.ToInt32(input_min.Text);
             int max = Convert.ToInt32(input_max.Text);
 
+            // Data validation
             if (min > max)
             {
                 MessageBox.Show("Min can not be greater than max");
@@ -132,20 +143,22 @@ namespace InventoryProgram_C968
 
             if (mode == "add")
             {
-                Inventory.addProduct(new Product( name, price, in_stock, min, max, partsList ));
+                Inventory.addProduct(new Product(name, price, in_stock, min, max, partsList));
                 Close();
             }
             else if (mode == "mod")
             {
                 Product modified_product;
                 int productID = Convert.ToInt32(input_id.Text);
-                modified_product = new Product( productID, name, price, in_stock, min, max, partsList);
+                modified_product = new Product(productID, name, price, in_stock, min, max, partsList);
                 Inventory.UpdateProduct(productID, modified_product);
                 Close();
             }
 
-            
+
         }
+
+        // Search available parts
         private void btn_search_Click(object sender, EventArgs e)
         {
             int searchID = 0;

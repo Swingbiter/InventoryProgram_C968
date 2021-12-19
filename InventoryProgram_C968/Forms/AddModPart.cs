@@ -1,6 +1,5 @@
 ﻿using System.Text.RegularExpressions;
 using System.ComponentModel;
-using System.Diagnostics;
 
 namespace InventoryProgram_C968
 {
@@ -9,8 +8,8 @@ namespace InventoryProgram_C968
         private string mode = "";
         private string source_mode = "in-house";
 
-
-        public AddModPart()
+        // Constructors
+        public AddModPart() // Empty constructor yields Add Part form
         {
             InitializeComponent();
             Text = "Add New Part";
@@ -19,7 +18,7 @@ namespace InventoryProgram_C968
             input_id.Text = Inventory.next_part_id.ToString();
         }
 
-        public AddModPart(Part _part)
+        public AddModPart(Part _part) // Constructor with Part argument yields Mod Part form
         {
             mode = "mod";
             InitializeComponent();
@@ -28,6 +27,7 @@ namespace InventoryProgram_C968
             LoadPart(_part);
         }
 
+        // Load part information into input boxes
         public void LoadPart(Part _part)
         {
             input_id.Text = _part.PartID.ToString();
@@ -52,6 +52,8 @@ namespace InventoryProgram_C968
             }
         }
 
+        // Button Event Handling
+        // Radio button handling
         private void radio_in_house(object sender, EventArgs e)
         {
             source_mode = "in-house";
@@ -70,6 +72,7 @@ namespace InventoryProgram_C968
             this.Close();
         }
 
+        // Save / Modify part
         private void btn_save_Click(object sender, EventArgs e)
         {
             string name = input_name.Text;
@@ -78,6 +81,7 @@ namespace InventoryProgram_C968
             int min = Convert.ToInt32(input_min.Text);
             int max = Convert.ToInt32(input_max.Text);
 
+            // Data validation
             if (min > max)
             {
                 MessageBox.Show("Min can not be greater than max");
@@ -94,7 +98,7 @@ namespace InventoryProgram_C968
 
             if (mode == "add")
             {
-                if (source_mode == "in-house")
+                if (source_mode == "in-house") // In-house part creation
                 {
                     int machine_id = Convert.ToInt32(input_source.Text);
                     Inventory.addPart(new Inhouse(
@@ -105,7 +109,7 @@ namespace InventoryProgram_C968
                         max,
                         machine_id));
                 }
-                else
+                else // Outsourced part creation
                 {
                     string company_name = input_source.Text;
                     Inventory.addPart(new Outsourced(
@@ -124,7 +128,7 @@ namespace InventoryProgram_C968
             {
                 Part modified_part;
 
-                if (source_mode == "in-house")
+                if (source_mode == "in-house") // In-house part modification
                 {
                     int machine_id = Convert.ToInt32(input_source.Text);
                     modified_part = new Inhouse(
@@ -135,7 +139,7 @@ namespace InventoryProgram_C968
                         max,
                         machine_id);
                 }
-                else
+                else // Outsource part modification
                 {
                     string company_name = input_source.Text;
                     modified_part = new Outsourced(

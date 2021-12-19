@@ -58,18 +58,21 @@
             this.PartsGroupBox.Controls.Add(this.searchbox_parts);
             this.PartsGroupBox.Controls.Add(this.btn_search_parts);
             this.PartsGroupBox.Controls.Add(this.partsDataGridView);
-            this.PartsGroupBox.Location = new System.Drawing.Point(11, 49);
+            this.PartsGroupBox.Location = new System.Drawing.Point(10, 37);
+            this.PartsGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PartsGroupBox.Name = "PartsGroupBox";
-            this.PartsGroupBox.Size = new System.Drawing.Size(482, 368);
+            this.PartsGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PartsGroupBox.Size = new System.Drawing.Size(422, 276);
             this.PartsGroupBox.TabIndex = 1;
             this.PartsGroupBox.TabStop = false;
             this.PartsGroupBox.Text = "Parts";
             // 
             // btn_add_part
             // 
-            this.btn_add_part.Location = new System.Drawing.Point(182, 325);
+            this.btn_add_part.Location = new System.Drawing.Point(159, 244);
+            this.btn_add_part.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_add_part.Name = "btn_add_part";
-            this.btn_add_part.Size = new System.Drawing.Size(94, 29);
+            this.btn_add_part.Size = new System.Drawing.Size(82, 22);
             this.btn_add_part.TabIndex = 5;
             this.btn_add_part.Text = "Add";
             this.btn_add_part.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(282, 325);
+            this.button3.Location = new System.Drawing.Point(247, 244);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 29);
+            this.button3.Size = new System.Drawing.Size(82, 22);
             this.button3.TabIndex = 4;
             this.button3.Text = "Modify";
             this.button3.UseVisualStyleBackColor = true;
@@ -87,9 +91,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(382, 325);
+            this.button2.Location = new System.Drawing.Point(334, 244);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
+            this.button2.Size = new System.Drawing.Size(82, 22);
             this.button2.TabIndex = 3;
             this.button2.Text = "Delete";
             this.button2.UseVisualStyleBackColor = true;
@@ -97,16 +102,18 @@
             // 
             // searchbox_parts
             // 
-            this.searchbox_parts.Location = new System.Drawing.Point(240, 27);
+            this.searchbox_parts.Location = new System.Drawing.Point(210, 20);
+            this.searchbox_parts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchbox_parts.Name = "searchbox_parts";
-            this.searchbox_parts.Size = new System.Drawing.Size(137, 27);
+            this.searchbox_parts.Size = new System.Drawing.Size(120, 23);
             this.searchbox_parts.TabIndex = 2;
             // 
             // btn_search_parts
             // 
-            this.btn_search_parts.Location = new System.Drawing.Point(382, 27);
+            this.btn_search_parts.Location = new System.Drawing.Point(334, 20);
+            this.btn_search_parts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_search_parts.Name = "btn_search_parts";
-            this.btn_search_parts.Size = new System.Drawing.Size(94, 29);
+            this.btn_search_parts.Size = new System.Drawing.Size(82, 22);
             this.btn_search_parts.TabIndex = 1;
             this.btn_search_parts.Text = "Search";
             this.btn_search_parts.UseVisualStyleBackColor = true;
@@ -117,22 +124,23 @@
             this.partsDataGridView.AllowUserToResizeRows = false;
             this.partsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.partsDataGridView.Location = new System.Drawing.Point(6, 61);
+            this.partsDataGridView.Location = new System.Drawing.Point(5, 46);
+            this.partsDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.partsDataGridView.MultiSelect = false;
             this.partsDataGridView.Name = "partsDataGridView";
             this.partsDataGridView.RowHeadersWidth = 51;
             this.partsDataGridView.RowTemplate.Height = 29;
             this.partsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.partsDataGridView.Size = new System.Drawing.Size(470, 259);
+            this.partsDataGridView.Size = new System.Drawing.Size(411, 194);
             this.partsDataGridView.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(11, 9);
+            this.label1.Location = new System.Drawing.Point(10, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(383, 37);
+            this.label1.Size = new System.Drawing.Size(315, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Inventory Management System";
             // 
@@ -144,18 +152,21 @@
             this.groupBox2.Controls.Add(this.searchbox_product);
             this.groupBox2.Controls.Add(this.btn_search_product);
             this.groupBox2.Controls.Add(this.productDataGridView);
-            this.groupBox2.Location = new System.Drawing.Point(501, 49);
+            this.groupBox2.Location = new System.Drawing.Point(438, 37);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(482, 368);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(422, 276);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Products";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(182, 325);
+            this.button5.Location = new System.Drawing.Point(159, 244);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(94, 29);
+            this.button5.Size = new System.Drawing.Size(82, 22);
             this.button5.TabIndex = 5;
             this.button5.Text = "Add";
             this.button5.UseVisualStyleBackColor = true;
@@ -163,9 +174,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(282, 325);
+            this.button6.Location = new System.Drawing.Point(247, 244);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 29);
+            this.button6.Size = new System.Drawing.Size(82, 22);
             this.button6.TabIndex = 4;
             this.button6.Text = "Modify";
             this.button6.UseVisualStyleBackColor = true;
@@ -173,9 +185,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(382, 325);
+            this.button7.Location = new System.Drawing.Point(334, 244);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(94, 29);
+            this.button7.Size = new System.Drawing.Size(82, 22);
             this.button7.TabIndex = 3;
             this.button7.Text = "Delete";
             this.button7.UseVisualStyleBackColor = true;
@@ -183,16 +196,18 @@
             // 
             // searchbox_product
             // 
-            this.searchbox_product.Location = new System.Drawing.Point(240, 27);
+            this.searchbox_product.Location = new System.Drawing.Point(210, 20);
+            this.searchbox_product.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchbox_product.Name = "searchbox_product";
-            this.searchbox_product.Size = new System.Drawing.Size(137, 27);
+            this.searchbox_product.Size = new System.Drawing.Size(120, 23);
             this.searchbox_product.TabIndex = 2;
             // 
             // btn_search_product
             // 
-            this.btn_search_product.Location = new System.Drawing.Point(382, 27);
+            this.btn_search_product.Location = new System.Drawing.Point(334, 20);
+            this.btn_search_product.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_search_product.Name = "btn_search_product";
-            this.btn_search_product.Size = new System.Drawing.Size(94, 29);
+            this.btn_search_product.Size = new System.Drawing.Size(82, 22);
             this.btn_search_product.TabIndex = 1;
             this.btn_search_product.Text = "Search";
             this.btn_search_product.UseVisualStyleBackColor = true;
@@ -203,20 +218,22 @@
             this.productDataGridView.AllowUserToResizeRows = false;
             this.productDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.productDataGridView.Location = new System.Drawing.Point(6, 61);
+            this.productDataGridView.Location = new System.Drawing.Point(5, 46);
+            this.productDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.productDataGridView.MultiSelect = false;
             this.productDataGridView.Name = "productDataGridView";
             this.productDataGridView.RowHeadersWidth = 51;
             this.productDataGridView.RowTemplate.Height = 29;
             this.productDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productDataGridView.Size = new System.Drawing.Size(470, 259);
+            this.productDataGridView.Size = new System.Drawing.Size(411, 194);
             this.productDataGridView.TabIndex = 0;
             // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(882, 423);
+            this.btn_Exit.Location = new System.Drawing.Point(772, 317);
+            this.btn_Exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(94, 29);
+            this.btn_Exit.Size = new System.Drawing.Size(82, 22);
             this.btn_Exit.TabIndex = 6;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
@@ -224,17 +241,18 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 467);
+            this.ClientSize = new System.Drawing.Size(866, 350);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PartsGroupBox);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Main";
             this.Text = "C968 Inventory App";
             this.Activated += new System.EventHandler(this.Main_Activated);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.Enter += new System.EventHandler(this.Main_Activated);
             this.PartsGroupBox.ResumeLayout(false);
             this.PartsGroupBox.PerformLayout();
